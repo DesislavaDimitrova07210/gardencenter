@@ -1,0 +1,31 @@
+{#  ---img on web---
+    1. no pic - load frame with text
+    2. one pic - load pic with background hover text
+    3. two pic
+    4. three pics #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="frames_container">
+    {% for product in products_arr %}
+        {%  if(product.img == "many") %}
+            <div class="many-box">
+                {% for image in product.arrImg %}
+                    <img class="many-img" src="/images/{{ image.name }}/" alt="no pic, sorry :)" >
+                {% endfor %}
+                <div class="many-text-external">
+                    <div class="many-text">{{product.name}}<hr>{{product.description}}</div>
+                </div>
+            </div>
+        {% else %}
+            <div class="product-box">
+                <img class="product-img" src="/images/{{ product.img }}/" alt="no pic, sorry :)" >
+                <div class="product-text-external">
+                    <div class="product-text">{{product.name}}<hr>{{product.description}}</div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
+

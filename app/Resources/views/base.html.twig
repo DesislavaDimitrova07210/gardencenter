@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+        <title>Градински център</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
+        {%  block stylesheets  %}<link href="{{ asset('css/main.css') }}" rel="stylesheet" />{%  endblock %}
+        {% block javascripts %}
+            {% if is_mobile() == 1 %} <script src="{{ asset('scripts/mobile.js') }}"></script>
+            {% else %} <script src="{{ asset('scripts/main.js') }}"></script>
+            {% endif %}
+        {% endblock %}
+</head>
+
+{% block header %}
+    <div class="main_page_title">
+        " Градински център "
+    </div>
+
+    <div class="header_container">
+        <div class="header_contain">
+            <ul>
+                <li> <a href="{{ path('home') }}"><img class="icon-img" src="{{ asset('images/home-icon-colored.png') }}"></a><span>Начало</span></li>
+                <li> <a href="{{ path('category', {'id': 1 }) }}"><img class="icon-img" src="{{ asset('images/tree-icon-colored.png') }}"></a><span>Дръвчета</span></li>
+                <li> <a href="{{ path('category', {'id': 2 }) }}"><img class="icon-img" src="{{ asset('images/flower-icon-colored.png') }}"></a><span>Цветя</span></li>
+                <li> <a href="{{ path('category', {'id': 3 }) }}"><img class="icon-img" src="{{ asset('images/seed-icon-colored.png') }}"></a><span>Разсад</span></li>
+                <li> <a href="{{ path('category', {'id': 4 }) }}"><img class="icon-img" src="{{ asset('images/tools-icon-colored.png') }}"></a><span>Инструменти</span></li>
+                <li> <a href="{{ path('category', {'id': 5 }) }}"><img class="icon-img"  src="{{ asset('images/ceramic-icon-colored.png') }}"></a><span>Кераммика</span></li>
+                <li> <a href="{{ path('contacts') }}"><img src="{{ asset('images/contact-icon-colored.png') }}"></a><span>Контакти</span></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="navigate-container" style="max-width:1500px;">
+            <img class="mainPic" src="images/main1.jpg">
+            <img class="mainPic" src="images/main2.jpg">
+            <img class="mainPic" src="images/main3.jpg">
+            <img class="mainPic" src="images/main4.jpg">
+            <img class="mainPic" src="images/main5.jpg">
+            <img class="mainPic" src="images/main6.jpg">
+            <img class="mainPic" src="images/main7.jpg">
+        </div>
+
+
+    </body>
+{% endblock %}
+
+{% block footer %}
+    <div class="footer_container">
+        Icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </div>
+{% endblock %}
+
+
+</html>

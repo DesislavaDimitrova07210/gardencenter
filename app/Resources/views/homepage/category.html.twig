@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% if is_mobile() == 1%}
+        <div class="mobile_header_container">
+            <div class="mobile_header_contain">
+                <ul>
+                    <li> <a href="{{ path('home') }}"><img  class="icon-img"  src="{{ asset('images/home-icon-colored.png') }}"></a><span>Начало</span></li>
+                    <li> <a href="{{ path('category', {'id': 1 }) }}"><img  class="icon-img" src="{{ asset('images/tree-icon-colored.png') }}"></a><span>Дръвчета</span></li>
+                    <li> <a href="{{ path('category', {'id': 2 }) }}"><img class="icon-img"  src="{{ asset('images/flower-icon-colored.png') }}"></a><span>Цветя</span></li>
+                    <li> <a href="{{ path('category', {'id': 3 }) }}"><img  class="icon-img" src="{{ asset('images/seed-icon-colored.png') }}"></a><span>Семена</span></li>
+                    <li> <a href="{{ path('category', {'id': 4 }) }}"><img  class="icon-img" src="{{ asset('images/tools-icon-colored.png') }}"></a><span>Инструменти</span></li>
+                    <li> <a href="{{ path('category', {'id': 5 }) }}"><img  class="icon-img" src="{{ asset('images/ceramic-icon-colored.png') }}"></a><span>Керамик</span></li>
+                    <li> <a href="{{ path('contacts') }}"><img  class="icon-img" src="{{ asset('images/contact-icon-colored.png') }}"></a><span>Контакти</span></li>
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="frames_container">
+        {% for product in products_arr %}
+            {%  if(product.img == "many") %}
+                <div class="many-box">
+                    {% for image in product.arrImg %}
+                        <img class="many-img" src="/images/{{ image.name }}/" alt="no pic, sorry :)" >
+                    {% endfor %}
+                    <div class="many-text-external">
+                        <div class="many-text">{{product.name}}<hr>{{product.description}}</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="product-box">
+                    <img class="product-img" src="/images/{{ product.img }}/" alt="no pic, sorry :)" >
+                    <div class="product-text-external">
+                        <div class="product-text">{{product.name}}<hr>{{product.description}}</div>
+                    </div>
+
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

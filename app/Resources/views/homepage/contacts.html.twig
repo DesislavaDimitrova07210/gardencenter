@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    {% if is_mobile() == 1%}
+        <div class="mobile_header_container">
+            <div class="mobile_header_contain">
+                <ul>
+                    <li> <a href="{{ path('home') }}"><img  class="icon-img"  src="{{ asset('images/home-icon-colored.png') }}"></a><span>Начало</span></li>
+                    <li> <a href="{{ path('category', {'id': 1 }) }}"><img  class="icon-img" src="{{ asset('images/tree-icon-colored.png') }}"></a><span>Дръвчета</span></li>
+                    <li> <a href="{{ path('category', {'id': 2 }) }}"><img class="icon-img"  src="{{ asset('images/flower-icon-colored.png') }}"></a><span>Цветя</span></li>
+                    <li> <a href="{{ path('category', {'id': 3 }) }}"><img  class="icon-img" src="{{ asset('images/seed-icon-colored.png') }}"></a><span>Семена</span></li>
+                    <li> <a href="{{ path('category', {'id': 4 }) }}"><img  class="icon-img" src="{{ asset('images/tools-icon-colored.png') }}"></a><span>Инструменти</span></li>
+                    <li> <a href="{{ path('category', {'id': 5 }) }}"><img  class="icon-img" src="{{ asset('images/ceramic-icon-colored.png') }}"></a><span>Керамик</span></li>
+                    <li> <a href="{{ path('contacts') }}"><img  class="icon-img" src="{{ asset('images/contact-icon-colored.png') }}"></a><span>Контакти</span></li>
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+{% block body %}
+   <div class="frame_contacts_container">
+       {% if is_mobile() == 1%}
+       <img class="imggg" src="{{ asset('images/road.jpg') }}">
+       {% else %}
+       <img class="imggg" src="{{ asset('images/garden.jpg') }}">
+       {% endif %}
+    </div>
+
+    <div class="frame_contacts_address">
+        <p>{{ arr.title }}</p>
+        <p>{{ arr.city }}</p>
+        <p>{{ arr.street }}</p>
+        <a href="{{"https://www.google.com/maps/@42.9088507,23.7973785,3a,70.1y,328.04h,72.5t/data=!3m7!1e1!3m5!1stssPE4S_o52-aCSVZcp4dw!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DtssPE4S_o52-aCSVZcp4dw%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D66.78236%26pitch%3D0%26thumbfov%3D100!7i13312!8i6656" }}">
+            <img src="{{ asset('images/map.jpg') }}"></a>
+    </div>
+{% endblock %}
